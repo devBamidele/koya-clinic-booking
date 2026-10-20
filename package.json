@@ -4,6 +4,7 @@
   "description": "Clinic appointment booking API and web page",
   "main": "src/server.js",
   "scripts": {
+    "build": "node --check src/server.js && node --check src/app.js && node --check src/db.js && node --check src/seed.js",
     "start": "node src/server.js",
     "test": "node --test test/"
   },

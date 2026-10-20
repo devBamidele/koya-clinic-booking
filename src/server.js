@@ -2,6 +2,16 @@ const { createPool, migrate } = require("./db");
 const { createApp } = require("./app");
 const { seedIfEmpty } = require("./seed");
 
+// Load .env.local / .env if present (neon deploy writes its vars there).
+// Real environment variables, e.g. on Render, always win.
+for (const file of [".env.local", ".env"]) {
+  try {
+    process.loadEnvFile(file);
+  } catch (_) {
+    /* file not present */
+  }
+}
+
 async function main() {
   const { DATABASE_URL, API_KEY, PORT = 3000 } = process.env;
   if (!DATABASE_URL) throw new Error("DATABASE_URL must be set");
