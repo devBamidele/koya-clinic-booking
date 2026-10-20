@@ -49,6 +49,23 @@ Replayed idempotent requests and rejected 429 requests are not counted.
 `POST /api/reset` also clears idempotency keys and rate-limit counters, so each test run
 starts clean.
 
+## Code layout
+
+```
+src/
+  server.js              starts the app: env, database, demo seed
+  app.js                 wires middleware and routes together
+  db.js                  connection pool, schema, transaction helper
+  routes/slots.js        POST /reset, GET /slots
+  routes/bookings.js     the four /bookings endpoints
+  services/bookings.js   the booking flow: idempotency, validation, locking
+  services/rateLimit.js  the per-email rate limit
+  middleware/            API key check and JSON error responses
+  serializers.js         row-to-JSON shapes and pagination cursors
+public/index.html        the web page
+test/api.test.js         end-to-end tests for all five levels
+```
+
 ## Run locally
 
 ```bash
