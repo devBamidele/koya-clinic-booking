@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: koya-clinic-booking
+    runtime: node
+    plan: free
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: DATABASE_URL
+        sync: false   # paste your Neon connection string
+      - key: API_KEY
+        generateValue: true

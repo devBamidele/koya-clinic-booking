@@ -1,0 +1,22 @@
+{
+  "name": "koya-clinic-booking",
+  "version": "1.0.0",
+  "description": "Clinic appointment booking API and web page",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test test/"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "embedded-postgres": "^17.5.0-beta.15"
+  }
+}
